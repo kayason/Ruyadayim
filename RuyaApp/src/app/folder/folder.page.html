@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="background">
+    
+    <ion-title>RUYADAYIM</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-searchbar placeholder="Ne gordun?" [(ngModel)]="kelime" (ngModelChange)="ruyaBul()"></ion-searchbar>
+
+
+  <ion-card *ngIf="!kelime">
+    <img src="assets/v743-tang-41.jpg" />
+    <ion-card-header>
+      <ion-card-subtitle>Dusler Alemi</ion-card-subtitle>
+      <ion-card-title>Ruya Nedir?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="font">
+      Rüya ya da düş, uykunun genel ve karakteristik özelliklerinden[1] biri olup, uykunun hızlı göz hareketi (REM)[1] adlı evreleriyle yakından ilişkili bulunan, görsel ve işitsel algı ve duygulardır. 
+    </ion-card-content>
+  </ion-card>
+  <div *ngIf="kelime">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Searching Results</ion-card-subtitle>
+      <ion-card-title color="tertiary">Results For {{kelime}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+
+  
+  <ion-list>
+    <ion-item *ngFor="let ruya of ruyalar" [routerLink]="['/detay',ruya.adi,ruya.aciklama]" routerLinkActive="router-link-active">
+      <ion-label>{{ruya.adi}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+</div>
+
+
+
+
+</ion-content>
